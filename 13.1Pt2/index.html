@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title></title>
+</head>
+<body>
+	<form>
+		<label>Title: </label> 
+		<input class="title-input" type="text" ><br><br>
+		<label>Rating: </label>
+		<input class="rating-input" type="text" placeholder="0-10"><br><br>
+		<input type="submit" value="Submit"><br><br>
+	</form>
+	<div class="rest"></div>
+	<script src="https://code.jquery.com/jquery-3.3.1.js"></script>
+	<script>
+		let count = 0
+		$('form').on('submit',function(evt){
+			evt.preventDefault()
+			if($('.title-input').get(0).value != "" && $('.rating-input').get(0).value != ""){
+				count += 1
+				$('<div> Movie </div>').appendTo($('.rest')).append("Title: " + $('.title-input').get(0).value).append('<br>').append("Rating: " +$('.rating-input').get(0).value).append('<br>').append('<input class="btn count-' + count + '" type="submit" value="Delete">').append('<br>')
+			}
+
+		})
+		$('.rest').on('click',function(e){
+			if(e.target.classList.contains('btn')){
+				e.target.parentNode.remove()
+			}
+			
+		})
+	</script>
+</body>
+</html>
